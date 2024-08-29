@@ -14,11 +14,11 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup("api", app, document);
+  SwaggerModule.setup("", app, document);
 
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true, transform: true }));
-  app.use(bodyParser.json({ limit: "50mb" })); // Configura o limite para JSON
-  app.use(bodyParser.urlencoded({ limit: "50mb", extended: true })); // Configura o limite para URL-encoded
+  app.use(bodyParser.json({ limit: "50mb" }));
+  app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
   await app.listen(3000);
 }

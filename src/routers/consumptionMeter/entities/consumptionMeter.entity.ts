@@ -5,26 +5,29 @@ export class ConsumptionMeter {
   @PrimaryGeneratedColumn()
   id: string;
 
-  @Column()
+  @Column({ type: "longtext" })
   image: string;
 
   @Column()
-  customerCode: string;
+  customer_code: string;
 
   @Column()
   measure_datetime: string;
 
   @Column()
-  type: string;
+  measure_type: string;
 
-  // @Column("decimal", { precision: 10, scale: 2 })
-  // value: number;
+  @Column("int", { nullable: true })
+  value: number | null;
 
-  // @Column({ default: false })
-  // confirmed: boolean;
+  @Column({ default: false })
+  has_confirmed: boolean;
 
-  // @Column()
-  // imageLink: string;
+  @Column()
+  image_url: string;
+
+  @Column()
+  measure_uuid: string;
 
   @CreateDateColumn()
   createdAt: Date;
