@@ -2,7 +2,7 @@ import { Body, Controller, Get, HttpCode, Param, Patch, Post, Query } from "@nes
 import { ApiBadRequestResponse, ApiConflictResponse, ApiNotFoundResponse, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { ConsumptionMeterService } from "./consumptionMeter.service";
 import { UploadConsumptionMeterDto } from "./dto/uploadConsumptionMeter.dto";
-import { ErroResponse, CreateSucesseResponse, GetSuccessResponse, UpdateSuccessResponse } from "./response/response.dto";
+import { ErroResponse, CreateSucesseResponse, GetSuccessResponse, UpdateSuccessResponse } from "../core/response/response.dto";
 import { ConfirmConsumptionMeterDto } from "./dto/confirmConsumptionMeter.dto";
 import { ListConsumptionMeterDto } from "./dto/listConsumptionMeter.dto";
 
@@ -29,7 +29,7 @@ export class ConsumptionMeterController {
     description: "Os dados fornecidos no corpo da requisição são inválidos",
     type: ErroResponse,
   })
-  public async upload(@Body() uploadConsumptionMeter: UploadConsumptionMeterDto) {
+  public async upload(@Body() uploadConsumptionMeter: UploadConsumptionMeterDto): Promise<CreateSucesseResponse | ErroResponse> {
     return this.consumptionMeterService.upload(uploadConsumptionMeter);
   }
 
@@ -56,7 +56,7 @@ export class ConsumptionMeterController {
     description: "Já existe uma leitura para este tipo no mês atual",
     type: ErroResponse,
   })
-  public async confirm(@Body() confirmConsumptionMeter: ConfirmConsumptionMeterDto) {
+  public async confirm(@Body() confirmConsumptionMeter: ConfirmConsumptionMeterDto): Promise<UpdateSuccessResponse | ErroResponse> {
     return this.consumptionMeterService.confirm(confirmConsumptionMeter);
   }
 
@@ -78,7 +78,7 @@ export class ConsumptionMeterController {
     description: "Nenhum registro encontrado",
     type: ErroResponse,
   })
-  public async list(@Param("_customerCode") _customerCode: string, @Query() filter: ListConsumptionMeterDto) {
+  public async list(@Param("_customerCode") _customerCode: string, @Query() filter: ListConsumptionMeterDto): Promise<GetSuccessResponse | ErroResponse> {
     return this.consumptionMeterService.list(_customerCode, filter);
   }
 }

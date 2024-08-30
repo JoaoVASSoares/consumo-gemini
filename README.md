@@ -1,73 +1,42 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Teste Shopper
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Author
+Me chamo João Vitor, tenho 24 anos e amo desenvolver. Meus hobbies favoritos são passar tempo com minha esposa, jogar e estar com meu cachorrinho.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Sou uma pessoa que gosta muito de aprender, estudar e compartilhar conhecimentos.
 
-## Description
+No desenvolvimento deste projeto, me esforcei ao máximo para dar o meu melhor. Tive que aprender como integrar com o Google para realizar os envios das imagens e fazer algumas configurações novas no framework.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Introduction
+Para o desenvolvimento desta api foi utilizado um framework express chamado NestJS na versão `10.4.1`.
+A versão do node é `20.13.1`.
 
-## Installation
+### Server
 
-```bash
-$ npm install
+#### Start project
+
+Para iniciar o projeto, é necessário configurar previamente a variável de ambiente com a API KEY do Google Gemini. Essa chave pode ser obtida seguindo o passo a passo fornecido pelo próprio Google. <a href="https://ai.google.dev/gemini-api/docs/api-key?hl=pt-br">click aqui e saiba mais!</a>
+
+Para um auxilio estou disponibilidando um arquivo por padrão chamado <code>.env-exemple</code> onde nele esta como a variavel da api deve estar configurada para o sistema funcionar.
+
+Para copiar basta executar (na pasta do projeto)
+```sh
+cp .env-example .env
 ```
+Isso irá gerar um arquivo `.env` na raiz do projeto, onde será necessário alterar o valor da variável pela sua API KEY.
 
-## Running the app
+#### Run project
+O projeto está containerizado com Docker. Para rodá-lo, primeiramente você deve baixar e instalar o Docker. Para isso, utilize o site oficial do <a href="https://www.docker.com/">docker</a>. 
+Após a instalação, basta rodar o comando `docker compose up -d`. Dessa forma, o build da aplicação será realizado e os containers necessários para o funcionamento serão iniciados.
 
-```bash
-# development
-$ npm run start
+Nesta aplicação foi utilizado o Swagger para documentação. Então, ao acessar `localhost:3000` você poderá visualizar a documentação no navegador.
+![Imagem do swagger do projeto Shopper](image.png)
 
-# watch mode
-$ npm run start:dev
+#### Observations
+Para converter as imagens em base64 utilizei o site <a href="https://www.base64-image.de/">BASE64IMAGE</a>. Paras os testes usei algumas imagens de exemplo.
 
-# production mode
-$ npm run start:prod
-```
 
-## Test
+![Medidor de gás](gas.jpeg)![Medidor de água](hidrometro.jpg)
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+## Database
+Como banco de dados, utilizei o MySQL, que ao executar o comando `docker compose up -d` será iniciado em um container junto com a aplicação, garantindo o funcionamento completo do sistema. Com isso, basta utilizar a aplicação normalmente.

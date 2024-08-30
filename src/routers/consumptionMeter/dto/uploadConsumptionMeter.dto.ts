@@ -1,10 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty, IsString } from "class-validator";
-
-export enum MeasureType {
-  WATER = "WATER",
-  GAS = "GAS",
-}
+import { MeasureType } from "src/routers/core/enum/measureType.enum";
 
 export class UploadConsumptionMeterDto {
   @ApiProperty({ description: "Imagem deve estar em base64" })
